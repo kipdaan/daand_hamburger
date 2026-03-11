@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        ✨Magic✨
+    </title>
+    <header>
+        <h1 id="home">✨Magic✨</h1>
+    </header>
+    <link rel="stylesheet" href="Magicstijl.css">
+</head>
+
+<body>
+    <ul>
+        <li><a href="Foto's.html">Foto's</a></li>
+        <li><a href="index.html">Hamburger</a></li>
+        <li style="float:right"><a href="https://www.youtube.com/watch?v=0j86zuqqTlQ" target="blank">Info Magic</a></li>
+    </ul>
+    <div class="box">
+        <img src="Afbeeldingen/blije hamburger.png" class="burger" id="burger" />
+    </div>
+
+    <script>
+        const burger = document.getElementById("burger");
+        const box = document.querySelector(".box");
+
+        let x = 100;
+        let y = 100;
+        let speedX = 5;
+        let speedY = 5;
+
+        function animate() {
+            const boxRect = box.getBoundingClientRect();
+            const burgerRect = burger.getBoundingClientRect();
+            x += speedX;
+            y += speedY;
+            if (x <= 0 || x + burgerRect.width >= box.clientWidth) {
+                speedX = -speedX;
+            }
+            if (y <= 0 || y + burgerRect.height >= box.clientHeight) {
+                speedY = -speedY;
+            }
+
+            burger.style.left = x + "px";
+            burger.style.top = y + "px";
+
+            requestAnimationFrame(animate);
+        }
+
+        burger.addEventListener("mouseenter", () => {
+            burger.src = "Afbeeldingen/boze hamburger.png";
+        });
+
+        burger.addEventListener("mouseleave", () => {
+            burger.src = "Afbeeldingen/blije hamburger.png";
+        });
+
+        animate();
+    </script>
+</body>
+
+</html>
